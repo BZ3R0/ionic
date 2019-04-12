@@ -1,0 +1,77 @@
+Criar um projeto
+  - ionic start myApp blank
+
+inicializar uma aplicação ionic
+  - ionic serve
+
+para inicializar uma aplicação e ver a diferença entre a versão android e ios
+  - ionic server --lab
+
+Após salvar o texto a versão do app é recarregada automaticamente. (renderização em tempo real)
+
+SEÇÃO 2 - aula 6
+O ionic é organizado especificamente por dois diretórios:
+  - resourses: Este diretório contém os icones e splashscreeen das aplicações
+  - src: Este diretório contém os arquivos da aplicação, tais como:
+      - app: componentes da aplicação, arquivos de terceiros.
+      - assets: ícones e imagens
+      - pages: html e css das páginas que compõem a aplicação
+      - theme: variáveis da aplicação
+
+No arquivo .ts variáveis podem ser criadas e serem atribuidos valores a elas para serem exibidas no aplicativo
+  nome: string - cria uma variável chamada nome do tipo string
+  this.nome = 'Caio' - atribui a string 'Caio' para a variável nome
+  {{nome}} é a forma para exibir o valor da variável nome na tela, está forma é utilizada no html
+
+SEÇÃO 3 - AULA 7
+criar uma página
+  - $ ionic generate page namePage
+  Após criar uma página é necessário definir que é possível acessá-la através do arquivo src/app/app.module.ts
+  - import { nomedaExportClass } from '../page/pageNome/pageFile'
+  adiciona também em declarations e em entryComponents
+  - nomedaExportClass
+
+Abaixo segue alguns comentários feitos no arquivo home.ts
+  //ViewChild é uma lib utilizada para obter informação digitada pelo usuário no HTML
+  //email e senha são variáveis disponíveis neste escopo e elas contém os valores que foram passados no HTML pela variável usuario e senha através da tag #usuario, #senha
+  //navController é responsável por realizar o push das páginas do aplicativo.
+  //toast é uma notificação utilizada para prover feedback sobre uma operação ou para exibir uma mensagem do sistema. https://ionicframework.com/docs/api/components/toast/ToastController/
+
+
+SEÇÃO 3 - AULA 10
+  criar um projeto no http://console.firebase.gogole.com após isso, deve-se instalar os pacotes firebase e o angulafire2 na aplicação (nutri).
+  - npm i -E firebase@4.8.2 angularfire2@5.0.0-rc.4
+
+  Para utilizar os pacotes é necessário importá-los no arquivo app.module.ts
+    import { AngularFireModule } from 'angularfire2';
+    import { AngularFireAuthModule } from 'angularfire2/auth';
+    adicionar então dentro de imports
+      AngularFireAuthModule,
+      AngularFireModule.initializeApp(firebase_key)
+
+      const firebase_key = {
+          apiKey: "AIzaSyAb_svM7jnreAukz4LNjT0IR03sT88Y_0Y",
+          authDomain: "nutri-230217.firebaseapp.com",
+          databaseURL: "https://nutri-230217.firebaseio.com",
+          projectId: "nutri-230217",
+          storageBucket: "nutri-230217.appspot.com",
+          messagingSenderId: "518519572647"
+        };
+
+    firebase_key encontra-se em autenticação -> configuração da web (canto superior direito)
+
+  Na tela que se deseja utilizar o pacote do firebase auth para realizar cadastro de usuário ou login, deve-se então instanciar uma variável para tal no constructor.
+    - public fire: AngularFireAuth
+    Na função de realização da autenticação com o fiirebase temos:
+      this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.senha.value).then(data => { condition }).catch((error: any)=>{ condition });
+
+    No this.fire.auth.createUserWithEmailAndPassword(), são passados dois parâmetros, email e senha que são os que vão cadastrar o usuário
+    No catch erros podem ser verificados, no link a seguir seguem alguns deles providos pelo firebase para autenticação, error.code:
+      https://firebase.google.com/docs/reference/js/firebase.auth.Auth?authuser=0
+
+  this.navCtrl.setRoot(DicasPage); //utilizando o setRoot não tem botão para retornar a página anterior
+
+
+SEÇÃO 3 - AULA 11
+
+  Manter usuário logado no sistema.

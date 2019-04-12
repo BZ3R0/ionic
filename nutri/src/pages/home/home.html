@@ -1,0 +1,26 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding>
+  <h2 class="titulo">Nutrivida</h2>
+
+  <ion-list inset>
+    <ion-item>
+        <ion-label stacked>Usuário</ion-label>
+        <ion-input type="text" #usuario ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password" #senha ></ion-input>
+    </ion-item>
+
+    <button ion-button block (click)="entrar()" >Entrar</button>
+    <button ion-button block (click)="registrar()" >Registrar</button>
+  </ion-list>
+</ion-content>

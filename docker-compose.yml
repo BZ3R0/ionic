@@ -1,0 +1,26 @@
+# docker-compose.yml
+# https://hub.docker.com/r/beevelop/ionic/tags/
+# docker-compose run --rm --service-ports ionic bash
+version: '3.6'
+services:
+        ionic:
+                image: beevelop/ionic:v3.20.0
+                privileged: true
+                stdin_open: true
+                tty: true
+                user: root
+                command: bash
+                working_dir: /var/www
+                network_mode: "host"
+                volumes:
+                        - .:/var/www
+                        - /dev/bus/usb:/dev/bus/usb
+                        - ~/.gradle:/root/.gradle
+                        - ~/.ionic:/root/.ionic
+                        - ~/.config:/root/.config
+                        - ~/.android:/root/.android
+                        - ~/.npm:/root/.npm
+                        - ~/.oracle_jre_usage:/root/.oracle_jre_usage
+                ports:
+                        - 8100:8100
+                        - 35729:35729
