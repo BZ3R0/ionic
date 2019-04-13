@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the DicasPage page.
@@ -15,9 +18,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DicasPage {
   nome:string;
+  email: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fire: AngularFireAuth) {
     this.nome = 'caio';
+    this.email = fire.auth.currentUser.email;
+  }
+
+  logout(){
+    this.fire.auth.signOut();
+    this.navCtrl.setRoot(HomePage);
   }
 
   ionViewDidLoad() {
