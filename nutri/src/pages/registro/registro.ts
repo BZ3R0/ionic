@@ -35,6 +35,8 @@ export class RegistroPage {
 
     this.fire.auth.createUserWithEmailAndPassword(this.email.value, this.senha.value).then(data => {
       //Logado com sucesso
+      toast.setMessage('Usuário cadastrado com sucesso!');
+      toast.present();
       this.navCtrl.setRoot(DicasPage); //utilizando o setRoot não tem botão para retornar a página anterior
     }).catch((error: any) => {
       if(error.code == 'auth/email-already-in-use'){
