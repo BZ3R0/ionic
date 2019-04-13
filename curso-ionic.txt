@@ -42,13 +42,14 @@ SEÇÃO 3 - AULA 10
   criar um projeto no http://console.firebase.gogole.com após isso, deve-se instalar os pacotes firebase e o angulafire2 na aplicação (nutri).
   - npm i -E firebase@4.8.2 angularfire2@5.0.0-rc.4
 
-  Para utilizar os pacotes é necessário importá-los no arquivo app.module.ts
+  Para utilizar os pacotes é necessário importá-los no arquivo src.app.module.ts
     import { AngularFireModule } from 'angularfire2';
     import { AngularFireAuthModule } from 'angularfire2/auth';
     adicionar então dentro de imports
       AngularFireAuthModule,
       AngularFireModule.initializeApp(firebase_key)
 
+      firebase_key é uma chave para o aplicativo, ele é gerada pelo site firebase.google
       const firebase_key = {
           apiKey: "AIzaSyAb_svM7jnreAukz4LNjT0IR03sT88Y_0Y",
           authDomain: "nutri-230217.firebaseapp.com",
