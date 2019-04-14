@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recuperar Senha</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+      <ion-label><ion-icon ios="ios-person" md="md-person"></ion-icon> E-mail</ion-label>
+      <ion-input type="text" #email ></ion-input>
+  </ion-item>
+
+  <button ion-button block class="botao" (click)="recuperar()">Recuperar</button>
+</ion-content>
