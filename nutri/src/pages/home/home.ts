@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { DicasPage } from '../dicas/dicas';
 import { RegistroPage } from '../registro/registro';
+import { RecuperarPage } from '../recuperar/recuperar';
 import { Users } from './users';
 
 @Component({
@@ -68,6 +69,10 @@ export class HomePage {
 
   registrar(){
     this.navCtrl.push(RegistroPage);
+  }
+
+  recuperar(){
+    this.navCtrl.push(RecuperarPage);
   }
 
 }

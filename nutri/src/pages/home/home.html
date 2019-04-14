@@ -7,20 +7,22 @@
 </ion-header> -->
 
 <ion-content padding>
-  <h2 class="titulo">Nutrivida</h2>
+  <!-- <h2 class="titulo">Nutrivida</h2> -->
+  <img class="logo" src="../assets/imgs/nutri-logo.png">
 
   <ion-list inset>
     <ion-item>
-        <ion-label stacked>Usuário</ion-label>
+        <ion-label><ion-icon ios="ios-person" md="md-person"></ion-icon> E-mail</ion-label>
         <ion-input type="text" #usuario ></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label stacked>Senha</ion-label>
+        <ion-label><ion-icon ios="ios-lock" md="md-lock"></ion-icon> Senha</ion-label>
         <ion-input type="password" #senha ></ion-input>
     </ion-item>
 
-    <button ion-button block (click)="entrar()" >Entrar</button>
-    <button ion-button block (click)="registrar()" >Registrar</button>
+    <button ion-button block class="botao" (click)="entrar()">Entrar</button>
+    <p class="links"><a (click)="registrar()">Cadastre-se</a></p>
+    <p class="links"><a (click)="recuperar()">Esqueceu sua senha?</a></p>
   </ion-list>
 </ion-content>
