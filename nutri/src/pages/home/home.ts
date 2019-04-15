@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 
 import { DicasPage } from '../dicas/dicas';
 import { RegistroPage } from '../registro/registro';
@@ -73,6 +74,29 @@ export class HomePage {
 
   recuperar(){
     this.navCtrl.push(RecuperarPage);
+  }
+
+  entrarComFacebook(){
+    //Conexão com API do Facebook, permitindo logar no sistema com a conta do Facebook
+    this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .then(res => {
+      console.log(res);
+      this.navCtrl.setRoot(DicasPage);
+    })
+  }
+
+  entrarComGoogle(){
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+
+    //conexão com API do Google, possibilitando logar no sistema com a conta do Google
+    firebase.auth().signInWithPopup(provider).then(function(result){
+      var token = result.credential.accessToken;
+      var user = result.user;
+      console.log('Token: ', token);
+      console.log('User: ', user);
+    })
   }
 
 }
