@@ -77,12 +77,20 @@ export class HomePage {
   }
 
   entrarComFacebook(){
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+
     //Conexão com API do Facebook, permitindo logar no sistema com a conta do Facebook
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
     .then(res => {
       console.log(res);
       this.navCtrl.setRoot(DicasPage);
     })
+    .catch((error: any) => {
+      if(error.code == 'auth/account-exists-with-different-credential'){
+        toast.setMessage('An account already exists with the same email address but different sign-in credential. Sign-in using a provider associated with this email address');
+      }
+      toast.present();
+    });
   }
 
   entrarComGoogle(){
@@ -91,11 +99,10 @@ export class HomePage {
     provider.addScope('email');
 
     //conexão com API do Google, possibilitando logar no sistema com a conta do Google
-    firebase.auth().signInWithPopup(provider).then(function(result){
-      var token = result.credential.accessToken;
-      var user = result.user;
-      console.log('Token: ', token);
-      console.log('User: ', user);
+    this.fire.auth.signInWithPopup(provider).then(res => {
+      //var token = result.credential.accessToken;
+      //var user = result.user;
+      this.navCtrl.setRoot(DicasPage);
     })
   }
 
