@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { HomePage } from '../home/home';
-
 @IonicPage()
 @Component({
   selector: 'page-recuperar',
@@ -23,7 +21,7 @@ export class RecuperarPage {
     .then(data => {
       toast.setMessage('Solicitação foi enviada ao e-mail digitado');
       toast.present();
-      this.navCtrl.pop(HomePage); //manda voltar para a página anterior
+      this.navCtrl.pop(); //manda voltar para a página anterior
     })
     .catch((error: any) => {
       if(error.code == "auth/invalid-email"){
