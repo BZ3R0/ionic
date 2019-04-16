@@ -17,12 +17,27 @@ import { HomePage } from '../home/home';
   templateUrl: 'dicas.html',
 })
 export class DicasPage {
-  nome:string;
+
   email: string;
 
+  fotoPerfil: boolean = false;
+
+  facebook = {
+    nome: '',
+    fotoUrl: ''
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public fire: AngularFireAuth) {
-    this.nome = 'caio';
+    this.facebook.nome = fire.auth.currentUser.displayName;
+    this.facebook.fotoUrl = fire.auth.currentUser.photoURL;
     this.email = fire.auth.currentUser.email;
+
+    if(this.facebook.fotoUrl == null){
+      this.fotoPerfil = false;
+    }
+    else{
+      this.fotoPerfil = true;
+    }
   }
 
   logout(){
