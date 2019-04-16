@@ -22,13 +22,13 @@
     </ion-item>
 
     <button ion-button block class="botao" (click)="entrar()">Entrar</button>
-    <button ion-button block (click)="entrarComFacebook()" icon-start>
+    <button ion-button block class="facebook" (click)="entrarComFacebook()" icon-start>
         <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
         Entrar com Facebook
     </button>
 
-    <button ion-button block (click)="entrarComGoogle()" icon-start>
-        <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+    <button ion-button block class="botao google" (click)="entrarComGoogle()" icon-start>
+        <ion-icon ios="logo-google" md="logo-google"></ion-icon>
         Entrar com Google
     </button>
     <p class="links"><a (click)="registrar()">Cadastre-se</a></p>
