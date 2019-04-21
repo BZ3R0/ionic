@@ -21,20 +21,4 @@
 
 <ion-content padding>
 
-  <ion-item *ngIf="fotoPerfil">
-    <ion-thumbnail item-start>
-      <img src="{{ facebook.fotoUrl }}">
-    </ion-thumbnail>
-    <h2>{{ facebook.nome }}</h2>
-    <p>{{ email }}</p>
-  </ion-item>
-
-  <ion-item *ngIf="!fotoPerfil">
-    <ion-thumbnail item-start>
-      <img src="../assets/imgs/user.png">
-    </ion-thumbnail>
-    <h2>Nutri Affairs</h2>
-    <p>{{ email }}</p>
-  </ion-item>
-
 </ion-content>
