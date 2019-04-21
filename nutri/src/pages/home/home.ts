@@ -102,6 +102,7 @@ export class HomePage {
     this.fire.auth.signInWithPopup(provider).then(res => {
       //var token = result.credential.accessToken;
       //var user = result.user;
+      console.log(res);
       this.navCtrl.setRoot(DicasPage);
     })
   }
